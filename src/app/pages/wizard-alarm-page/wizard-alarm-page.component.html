@@ -1,0 +1,108 @@
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="alarmFormGroup">
+    <form [formGroup]="alarmFormGroup">
+      <ng-template matStepLabel>Name the alarm</ng-template>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Name" formControlName="name">
+          <mat-error *ngIf="alarmFormGroup.get('name').hasError('required') && alarmFormGroup.get('name').touched">
+            Name is
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Description" formControlName="description">
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="camerasFormGroup">
+    <form [formGroup]="camerasFormGroup">
+      <ng-template matStepLabel>Select cameras</ng-template>
+      <div>
+        <app-list-devices-component [devices]="devices" [displayedColumns]="['select', 'serialNumber', 'model', 'status']" (onSelect)="onSelectDevice(element)" (onUnSelect)="onUnSelectDevice(element)"></app-list-devices-component>
+      </div>
+      <div>
+        <app-dialog-error-component *ngIf="hasErrors"></app-dialog-error-component>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="recordingsFormGroup">
+    <form [formGroup]="recordingsFormGroup">
+      <ng-template matStepLabel>Select recording</ng-template>
+      <div>
+        <mat-checkbox formControlName="motionDetection" class="form-margin">
+          Motion detection recording
+        </mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox formControlName="continous" class="form-margin">
+          Continous recording
+        </mat-checkbox>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="smsFormGroup">
+    <ng-template matStepLabel>Sms notification</ng-template>
+    <form [formGroup]="smsFormGroup">
+      <mat-checkbox [(ngModel)]="sendSms" formControlName="sendSms">use sms notification</mat-checkbox>
+      <section *ngIf="sendSms">
+        <div>
+          <mat-form-field class="full-width">
+            <input type="username" matInput placeholder="sms username" formControlName="smsUsername">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input type="password" matInput placeholder="sms password" formControlName="smsPassword">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input type="text" matInput placeholder="sms sender" formControlName="smsFromNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input type="number" matInput placeholder="sms interval in minutes" formControlName="smsInterval">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input type="tel" matInput placeholder="Mobilenumbers" formControlName="mobileNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+          <button mat-button (click)="saveSmsNumber()">Save</button>
+        </div>
+        <div>
+          <mat-list>
+            <mat-list-item *ngFor="let number of smsNumbers">
+              <a [routerLink]="" (click)="editSmsNumber(number)">{{ number }} </a> &nbsp;
+              <button (click)="deleteSmsNumber(number)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </section>
+    </form>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="save()">Save</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,20 @@
+.theform {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .form-section {
+    display: flex;
+    align-content: left;
+    align-items: left;
+    height: 60px;
+  }
+  
+  .form-margin {
+    margin: 10px;
+  }

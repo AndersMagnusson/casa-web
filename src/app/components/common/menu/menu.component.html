@@ -1,0 +1,47 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <nav mat-menu-item>
+    <a routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>hem</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/events">
+      <mat-icon>alarm on</mat-icon>
+      <span>händelser</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/cameras">
+      <mat-icon>camera</mat-icon>
+      <span>Cameras</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/discovery">
+      <mat-icon>add</mat-icon>
+      <span>Add cameras</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/alarms">
+      <mat-icon>alarm</mat-icon>
+      <span>List alarms</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/createAlarm">
+      <mat-icon>add</mat-icon>
+      <span>Add alarm</span>
+    </a>
+  </nav>
+  <nav mat-menu-item>
+    <a routerLink="/wizardAlarm">
+      <mat-icon>add</mat-icon>
+      <span>Wizard alarm</span>
+    </a>
+  </nav>
+</mat-menu>

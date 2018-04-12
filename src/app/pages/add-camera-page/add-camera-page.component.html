@@ -1,0 +1,8 @@
+<!-- <section class="timeline">
+  <ul #addCameraList>
+    <app-editable-device-component *ngFor="let device of devices" [device]="device" (onSaved)="onSaved($event)"></app-editable-device-component>
+  </ul>
+</section> -->
+
+<app-list-devices-component [devices]="devices" [displayedColumns]="['add', 'serialNumber', 'model', 'status']" (onCredentialsSave)="onCredentialsSave($event)"></app-list-devices-component>
+<app-dialog-error-component *ngIf="hasErrors"></app-dialog-error-component>

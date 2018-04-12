@@ -1,0 +1,44 @@
+<li [class.in-view]="isInViewPort" (window:resize)="checkElement()" (window:scroll)="checkElement()" (load)="checkElement()">
+
+  <div>
+    <!-- <h4 mat-line>Address</h4>
+    <p mat-line> {{device.address}} </p>
+
+    <h4 mat-line>Serialnumber</h4>
+    <p mat-line> {{device.serialNumber}} </p>
+
+    <h4 mat-line>Model</h4>
+    <p mat-line> {{device.modelName}}</p> -->
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <h4 mat-line>Address</h4>
+            <p mat-line> {{device.address}} </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h4 mat-line>Serialnumber</h4>
+            <p mat-line> {{device.serialNumber}} </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h4 mat-line>Model</h4>
+            <p mat-line> {{device.modelName}}</p>
+          </mat-list-item>
+        </mat-list>
+        <!-- <h4 mat-line>Address</h4>
+        <p mat-line> {{device.address}} </p>
+
+        <h4 mat-line>Serialnumber</h4>
+        <p mat-line> {{device.serialNumber}} </p>
+
+        <h4 mat-line>Model</h4>
+        <p mat-line> {{device.modelName}}</p> -->
+      </mat-card-content>
+    </mat-card>
+    <app-credentials-component (onSavedCredentials)="onSavedCredentials($event)"></app-credentials-component>
+  </div>
+</li>

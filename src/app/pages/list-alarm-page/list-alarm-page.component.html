@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Available alarms</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let alarm of alarms">
+          <a [routerLink]="['/wizardAlarm', alarm.id]">{{alarm.id}}</a>&nbsp;
+        <button (click)="delete(alarm)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

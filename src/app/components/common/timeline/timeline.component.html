@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-content>
+    <section class="timeline">
+      <ul #eventList>
+        <app-timeline-item *ngFor="let event of events" [event]="event"></app-timeline-item>
+      </ul>
+    </section>
+  </mat-card-content>
+</mat-card>

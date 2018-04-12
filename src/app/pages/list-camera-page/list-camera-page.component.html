@@ -1,0 +1,2 @@
+<app-list-devices-component [devices]="devices" [displayedColumns]="['serialNumber', 'model', 'status', 'edit']" (onCredentialsSave)="onCredentialsSave($event)" (onRemove)="onRemove($event)"></app-list-devices-component>
+<app-dialog-error-component *ngIf="hasErrors"></app-dialog-error-component>

@@ -1,0 +1,10 @@
+<li [class.in-view]="isInViewPort" [class.warning]="event.eventType==='WARNING'" (window:resize)="checkElement()"
+  (window:scroll)="checkElement()" (load)="checkElement()">
+  <div>
+    <mat-icon [hidden]="!event.icon">{{event.icon}}</mat-icon>
+    <time>{{getDate(event.date)}}</time>
+    <p>
+      {{ event.header }}
+    </p>
+  </div>
+</li>

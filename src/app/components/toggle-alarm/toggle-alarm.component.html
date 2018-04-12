@@ -1,0 +1,9 @@
+<mat-card *ngFor="let alarm of alarms">
+  <mat-card-header>
+    <mat-card-title>{{alarm.id}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-slide-toggle (change)="toggle(alarm)" [color]="color" [checked]="alarm.on">
+    </mat-slide-toggle>
+  </mat-card-content>
+</mat-card>
