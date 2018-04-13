@@ -2,7 +2,7 @@ import { Component, OnInit, group } from '@angular/core';
 
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { DevicesApi, AlarmsApi, Device, Alarm } from '../../backend';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-wizard-alarm-page',
@@ -26,7 +26,12 @@ export class WizardAlarmPageComponent implements OnInit {
   private editNumber: string;
   private alarmId: string;
 
-  constructor(private fb: FormBuilder, private deviceApi: DevicesApi, private alarmsApi: AlarmsApi, private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder,
+    private deviceApi: DevicesApi,
+    private alarmsApi: AlarmsApi) {
     this.devices = [];
     this.smsNumbers = [];
     this.sendSms = false;
@@ -35,7 +40,6 @@ export class WizardAlarmPageComponent implements OnInit {
   ngOnInit() {
     this.selectedDevices = new FormControl();
     this.selectedDevices.setValue([]);
-    console.log('params:', this.route.snapshot.paramMap.keys);
     const alarmId = this.route.snapshot.paramMap.get('alarmId');
     if (alarmId) {
       this.alarmId = alarmId;
@@ -68,7 +72,6 @@ export class WizardAlarmPageComponent implements OnInit {
   }
 
   public onAdd(element: Device) {
-    console.log('onAdd', element);
   }
 
   public save(theForm) {
@@ -90,12 +93,12 @@ export class WizardAlarmPageComponent implements OnInit {
       };
 
       this.alarmsApi.createAlarm(createAlarm).subscribe((res) => {
-        console.log('created');
         this.alarmFormGroup.reset();
         this.recordingsFormGroup.reset();
         this.smsFormGroup.reset();
         this.selectedDevices.reset();
-        this.listAlarms();
+        this.router.navigate(['/alarms']);
+
       }, (err) => {
         console.error('failed: ', err);
       });
@@ -133,9 +136,7 @@ export class WizardAlarmPageComponent implements OnInit {
   }
 
   public onSelectDevice(device: Device) {
-    console.log('theDevice', device);
     this.selectedDevices.value.push(device.serialNumber);
-    console.log('selectedDevices: ', this.selectedDevices.value);
   }
 
   public onUnSelectDevice(device: Device) {

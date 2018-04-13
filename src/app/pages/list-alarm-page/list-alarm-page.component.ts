@@ -13,7 +13,6 @@ export class ListAlarmPageComponent implements OnInit {
   constructor(private alarmsApi: AlarmsApi) { }
 
   ngOnInit() {
-    console.log('list alarm');
     this.listAlarms();
   }
 

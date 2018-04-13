@@ -59,7 +59,6 @@ export class AddCameraPageComponent implements OnInit, OnDestroy {
       deviceCredentials.serialNumber,
       new Credentials(deviceCredentials.username, deviceCredentials.password));
     this.deviceApi.addDevice(addDevice).subscribe((res) => {
-      console.log('before:', this.devices);
       const addedDevice = this.devices.find((d) => d.serialNumber === deviceCredentials.serialNumber);
       if (addedDevice) {
         this.existingDevices.push(addDevice);
@@ -79,7 +78,6 @@ export class AddCameraPageComponent implements OnInit, OnDestroy {
   }
 
   public onSaved(addCamera: AddCamera) {
-    console.log('add-camera-page', addCamera);
     this.deviceApi.addDevice(addCamera).subscribe((res) => {
       this.deviceAddedBar.open(`Device ${addCamera.serialNumber} was added`, `${addCamera.serialNumber}`, {
         duration: 3000,
@@ -110,7 +108,6 @@ export class AddCameraPageComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('closed');
     });
   }
 }

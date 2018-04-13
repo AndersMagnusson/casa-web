@@ -25,7 +25,6 @@ export class ListDevicesComponentComponent implements OnInit {
 
   @Input()
   set devices(devices: Device[]) {
-    console.log('setting devices', devices);
     if (devices && devices.length > 0) {
       // for (const d of devices) {
       //   if (d.status && d.status.hasStatus) {
@@ -93,8 +92,6 @@ export class ListDevicesComponentComponent implements OnInit {
   }
 
   public onSelecting(element: Device, checkBox: MatCheckbox) {
-    console.log('event: ', checkBox);
-
     if (!element.status) {
       return;
     }
@@ -102,7 +99,6 @@ export class ListDevicesComponentComponent implements OnInit {
       this.openEditDialog(element);
     } else {
       if (checkBox.checked) {
-        console.log('element: ', element);
         this.onSelect.emit(element);
       } else {
         this.onUnSelect.emit(element);
@@ -118,9 +114,7 @@ export class ListDevicesComponentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: DeviceCredentials) => {
       if (result) {
-        console.log('Emitting credentials', result);
         this.onCredentialsSave.emit(result);
-        console.log('Edmitted credentials', result);
       }
     });
   }
@@ -133,9 +127,7 @@ export class ListDevicesComponentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        console.log('Emitting delete', result);
         this.onRemove.emit(new RemoveDevice(device.serialNumber));
-        console.log('Edmitted delete', result);
       }
     });
   }

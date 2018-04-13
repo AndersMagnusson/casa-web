@@ -19,14 +19,11 @@ export class EventsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
-
     this.alarmApi.getAlarms()
       .map((alarms) => alarms.map((a) => new Event(a.date, a.id, EventType.Normal, a.on ? 'alarm_on' : 'alarm_off')))
       .merge(this.alertsApi.listAlerts()
         .map((alerts) => alerts.map((b) => new Event(b.date, b.shortDescription, EventType.Warning, 'warning'))))
       .subscribe((res) => {
-        console.log('res:', res);
         const temp = this.events.concat(res);
         this.events = temp.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       }, (err) => {

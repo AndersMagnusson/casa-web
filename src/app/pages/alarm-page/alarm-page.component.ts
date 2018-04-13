@@ -26,10 +26,8 @@ export class AlarmPageComponent implements OnInit {
       .merge(this.alertsApi.listAlertsForAlarm(alarm.id)
         .map((alerts) => alerts.map((b) => new Event(b.date, b.shortDescription, EventType.Warning, 'warning'))))
       .subscribe((res) => {
-        console.log('res:', res);
         const temp = this.events.concat(res); // alarm.logs.concat(res);
         this.events = temp.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        console.log(this.events);
       }, (err) => {
         console.error(err);
       });

@@ -22,7 +22,6 @@ export class DialogCredentialsComponentComponent implements OnInit {
     private discoveryApi: DiscoveryApi) { }
 
   ngOnInit() {
-    console.log('data:', this.device);
     this.username = this.device.username;
     this.usernameFormControl.setValue(this.username);
   }
@@ -36,7 +35,6 @@ export class DialogCredentialsComponentComponent implements OnInit {
         this.dialogRef.close(new DeviceCredentials(
            this.device.serialNumber, this.usernameFormControl.value, this.passwordFormControl.value));
       }, (err) => {
-        console.log('failed cred', err);
         if (err.status === 401) {
           this.showError = true;
           this.errorMessage = 'Wrong username and/or password';

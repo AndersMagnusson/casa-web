@@ -48,12 +48,10 @@ export class ListCameraPageComponent implements OnInit {
   }
 
   public onCredentialsSave(deviceCredentials: DeviceCredentials) {
-    console.log('saving credentials');
     const addDevice = new AddCamera(
       deviceCredentials.serialNumber,
       new Credentials(deviceCredentials.username, deviceCredentials.password));
     this.deviceApi.addDevice(addDevice).subscribe((res) => {
-      console.log('device was updated');
     }, (err) => {
       console.error('err', err);
       if (err.status === 401) {
@@ -77,7 +75,6 @@ export class ListCameraPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('closed');
     });
   }
 }

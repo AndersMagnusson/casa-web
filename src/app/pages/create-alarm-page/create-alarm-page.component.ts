@@ -57,7 +57,6 @@ export class CreateAlarmPageComponent implements OnInit {
       };
 
       this.alarmsApi.createAlarm(createAlarm).subscribe((res) => {
-        console.log('created');
         this.createAlarmForm.reset();
         this.selectedDevices.reset();
         this.listAlarms();

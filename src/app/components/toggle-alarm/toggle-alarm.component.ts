@@ -35,10 +35,8 @@ export class ToggleAlarmComponent implements OnInit {
   }
 
   public toggle(alarm) {
-    console.log('toggle', alarm);
     const toggleAlarm: ToggleAlarm = { on: !alarm.on };
     this.alarmsApi.toggleAlarm(alarm.id, toggleAlarm).subscribe((res) => {
-      console.log('finished');
       alarm.on = toggleAlarm.on;
       this.onToggled.emit(res);
     }, (err) => console.error(err));

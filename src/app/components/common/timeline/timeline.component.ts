@@ -20,8 +20,6 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
-
     // this.alarmApi.getAlarms().subscribe((alarms) => {
     //   alarms.forEach(alarm => {
     //     this.alarmApi.getLogs(alarm.id).map((a) => a.map(

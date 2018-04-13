@@ -20,17 +20,13 @@ export class LiveViewDeviceComponent implements OnInit {
   async ngOnInit() {
     this.showVideo = false;
     const v = this.videoElement.nativeElement;
-    console.log('live-view host: ', this.device.address);
-    console.log('videoElement: ', v);
 
     // let h = new HttpHeaders();
     // h = h.append('Authorization', 'Basic ' + btoa('root:pass1'));
     // h = h.append('Access-Control-Allow-Origin', '*');
 
     this.showVideo = await this.authorize(this.device.address);
-    console.log('error: ', this.showVideo);
     if (this.showVideo) {
-      console.log('authenticated');
       const pipeline = new pipelines.Html5VideoPipeline({
         ws: { uri: `ws://${this.device.address}/rtsp-over-websocket` },
         rtsp: { uri: `rtsp://${this.device.address}/axis-media/media.amp` },
