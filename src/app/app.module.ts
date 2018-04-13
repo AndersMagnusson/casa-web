@@ -30,6 +30,8 @@ import { DialogErrorComponentComponent } from './components/common/dialog-error-
 import { DialogYesNoComponent } from './components/common/dialog-yes-no/dialog-yes-no.component';
 import { WizardAlarmPageComponent } from './pages/wizard-alarm-page/wizard-alarm-page.component';
 import { ListAlarmPageComponent } from './pages/list-alarm-page/list-alarm-page.component';
+import { LiveViewPageComponent } from './pages/live-view-page/live-view-page.component';
+import { LiveViewDeviceComponent } from './components/common/live-view-device/live-view-device.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ListAlarmPageComponent } from './pages/list-alarm-page/list-alarm-page.
     DialogErrorComponentComponent,
     DialogYesNoComponent,
     WizardAlarmPageComponent,
-    ListAlarmPageComponent
+    ListAlarmPageComponent,
+    LiveViewPageComponent,
+    LiveViewDeviceComponent
   ],
   entryComponents: [DialogCredentialsComponentComponent, DialogErrorComponentComponent, DialogYesNoComponent],
   imports: [

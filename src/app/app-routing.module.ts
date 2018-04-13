@@ -7,6 +7,7 @@ import { ListCameraPageComponent } from './pages/list-camera-page/list-camera-pa
 import { CreateAlarmPageComponent } from './pages/create-alarm-page/create-alarm-page.component';
 import { ListAlarmPageComponent } from './pages/list-alarm-page/list-alarm-page.component';
 import { WizardAlarmPageComponent } from './pages/wizard-alarm-page/wizard-alarm-page.component';
+import { LiveViewPageComponent } from './pages/live-view-page/live-view-page.component';
 
 const routes: Routes = [
   { path: '', component: AlarmPageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'createAlarm', component: CreateAlarmPageComponent },
   { path: 'wizardAlarm/:alarmId', component: WizardAlarmPageComponent },
   { path: 'wizardAlarm', component: WizardAlarmPageComponent },
+  { path: 'liveview', component: LiveViewPageComponent },
 ];
 
 @NgModule({

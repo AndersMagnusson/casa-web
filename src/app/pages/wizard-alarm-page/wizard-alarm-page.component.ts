@@ -113,6 +113,7 @@ export class WizardAlarmPageComponent implements OnInit {
     this.alarmFormGroup.get('description').setValue(alarm.description);
     this.recordingsFormGroup.get('motionDetection').setValue(alarm.motionDetection);
     this.recordingsFormGroup.get('continous').setValue(alarm.continous);
+
     if (alarm.sms) {
       if (alarm.sms.mobileNumbers) {
         this.smsNumbers = alarm.sms.mobileNumbers;
@@ -122,7 +123,7 @@ export class WizardAlarmPageComponent implements OnInit {
         this.smsFormGroup.get('smsPassword').setValue(alarm.sms.password);
         this.smsFormGroup.get('smsFromNumber').setValue(alarm.sms.fromNumber);
         this.smsFormGroup.get('smsInterval').setValue(alarm.sms.interval);
-        this.selectedDevices.setValue(alarm.devices);
+        this.selectedDevices.setValue(alarm.devices.filter(s => s !== ''));
         this.sendSms = true;
       } else {
         this.smsFormGroup.get('sendSms').setValue(false);
@@ -132,12 +133,14 @@ export class WizardAlarmPageComponent implements OnInit {
   }
 
   public onSelectDevice(device: Device) {
-    this.selectedDevices.value.push(device);
+    console.log('theDevice', device);
+    this.selectedDevices.value.push(device.serialNumber);
+    console.log('selectedDevices: ', this.selectedDevices.value);
   }
 
   public onUnSelectDevice(device: Device) {
     const temp = this.selectedDevices.value as Array<Device>;
-    this.selectedDevices.setValue(temp.filter((d) => d.serialNumber !== device));
+    this.selectedDevices.setValue(temp.filter((s) => s !== device.serialNumber));
   }
 
   public saveSmsNumber() {

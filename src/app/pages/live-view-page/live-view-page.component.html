@@ -1,0 +1,5 @@
+<mat-grid-list cols="1">
+  <mat-grid-tile *ngFor="let d of devices" [colspan]="1" [rowspan]="1">
+      <app-live-view-device [device]="d"></app-live-view-device>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -25,7 +25,7 @@
     <form [formGroup]="camerasFormGroup">
       <ng-template matStepLabel>Select cameras</ng-template>
       <div>
-        <app-list-devices-component [devices]="devices" [displayedColumns]="['select', 'serialNumber', 'model', 'status']" (onSelect)="onSelectDevice(element)" (onUnSelect)="onUnSelectDevice(element)"></app-list-devices-component>
+        <app-list-devices-component [devices]="devices" [displayedColumns]="['select', 'serialNumber', 'model', 'status']" (onSelect)="onSelectDevice($event)" (onUnSelect)="onUnSelectDevice($event)"></app-list-devices-component>
       </div>
       <div>
         <app-dialog-error-component *ngIf="hasErrors"></app-dialog-error-component>

@@ -94,7 +94,7 @@ export class ListDevicesComponentComponent implements OnInit {
 
   public onSelecting(element: Device, checkBox: MatCheckbox) {
     console.log('event: ', checkBox);
-    console.log('element: ', element);
+
     if (!element.status) {
       return;
     }
@@ -102,6 +102,7 @@ export class ListDevicesComponentComponent implements OnInit {
       this.openEditDialog(element);
     } else {
       if (checkBox.checked) {
+        console.log('element: ', element);
         this.onSelect.emit(element);
       } else {
         this.onUnSelect.emit(element);
